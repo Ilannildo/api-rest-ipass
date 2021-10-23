@@ -17,7 +17,7 @@ export class PostgresUserrepository implements IUserRepository{
     const userCreated = await client.user.create({
       data: user
     });
-
+    
     return userCreated;
   }
 }

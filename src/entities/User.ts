@@ -6,7 +6,7 @@ export class User {
   public givenName?: string;
   public familyName?: string;
   public photo?: string;
-  public password?: string;
+  // public password?: string;
   public active?: boolean;
   public createdAt?: Date;
   public updatedAt?: Date;

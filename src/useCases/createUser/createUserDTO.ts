@@ -1,5 +1,8 @@
+import { RefreshToken } from "../../entities/RefreshToken";
 import { User } from "../../entities/User";
 
-export type ICreateUserResquest = {
+export type ICreateUserResponse = {
   user: User;
+  accessToken: string;
+  refreshToken: RefreshToken;
 };

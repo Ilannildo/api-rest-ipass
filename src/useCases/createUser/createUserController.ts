@@ -17,16 +17,7 @@ export class CreateUserController {
         audience: GOOGLE_APPLICATION_CREDENTIALS
       });
       const payload = ticket.getPayload();
-      const userId = payload.sub;
       console.log('Payload =>',payload);
-
-  // sub: '115001518569448690655',
-  // email: 'ilannildoviana12@gmail.com',
-  // email_verified: true,
-  // name: 'Ilannildo Viana',
-  // picture: 'https://lh3.googleusercontent.com/a-/AOh14GgYz8s1V7dCP0HPHDr_U4pPqigqDUZO73ao4cLz1w=s96-c',
-  // given_name: 'Ilannildo',
-  // family_name: 'Viana',
 
 
       const user = await this.createUserUseCase.execute({

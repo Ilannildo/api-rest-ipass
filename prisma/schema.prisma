@@ -18,7 +18,7 @@ model User {
   givenName    String?
   familyName   String?
   photo        String?
-  password     String?
+  // password     String?
   active       Boolean       @default(true)
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
@@ -38,12 +38,13 @@ model RefreshToken {
 }
 
 model Enroll {
-  uid       String   @id @default(uuid())
-  publicKey String
-  user      User     @relation(fields: [userId], references: [uid])
-  userId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  uid            String   @id @default(uuid())
+  publicKey      String
+  passwordMaster String
+  user           User     @relation(fields: [userId], references: [uid])
+  userId         String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   @@map("tb_enroll")
 }

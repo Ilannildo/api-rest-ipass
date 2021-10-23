@@ -20,12 +20,14 @@
   "homepage": "https://github.com/Ilannildo/api-rest-ipass#readme",
   "dependencies": {
     "@prisma/client": "^3.2.1",
+    "bcryptjs": "^2.4.3",
     "dayjs": "^1.10.7",
     "express": "^4.17.1",
     "google-auth-library": "^7.10.1",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
