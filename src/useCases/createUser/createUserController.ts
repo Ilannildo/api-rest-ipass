@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { CreateUserUseCase } from "./createUserUseCase";
-import { GOOGLE_APPLICATION_CREDENTIALS } from '../../config/auth.json';
 
 export class CreateUserController {
   constructor(
@@ -11,14 +10,12 @@ export class CreateUserController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { idToken } = request.body;
     try {
-      const clientGoogle = new OAuth2Client(GOOGLE_APPLICATION_CREDENTIALS);
+      const clientGoogle = new OAuth2Client(process.env.GOOGLE_APPLICATION_CREDENTIALS);
       const ticket = await clientGoogle.verifyIdToken({
         idToken: idToken,
-        audience: GOOGLE_APPLICATION_CREDENTIALS
+        audience: process.env.GOOGLE_APPLICATION_CREDENTIALS
       });
       const payload = ticket.getPayload();
-      console.log('Payload =>',payload);
-
 
       const user = await this.createUserUseCase.execute({
         sub: payload.sub,

@@ -9,15 +9,13 @@ export class CreateEnrollController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
       publicKey,
-      passwordMaster,
       userId
     } = request.body;
 
     try {
       const enroll = await this.createdEnrollUseCase.execute({
-        passwordMaster,
-        publicKey,
-        userId
+        publicKey: publicKey,
+        userId: userId
       });
 
       return response.status(201).json({

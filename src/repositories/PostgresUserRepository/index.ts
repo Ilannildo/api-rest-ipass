@@ -6,7 +6,7 @@ export class PostgresUserrepository implements IUserRepository{
   async findByUserId(userId: string): Promise<User> {
     const user = await client.user.findFirst({
       where: {
-        uid: userId
+        sub: userId
       }
     });
 

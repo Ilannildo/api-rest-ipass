@@ -14,7 +14,7 @@ model User {
   uid          String        @id @default(uuid())
   sub          String
   email        String        @unique
-  name         String        @unique
+  name         String
   givenName    String?
   familyName   String?
   photo        String?
@@ -38,13 +38,12 @@ model RefreshToken {
 }
 
 model Enroll {
-  uid            String   @id @default(uuid())
-  publicKey      String
-  passwordMaster String
-  user           User     @relation(fields: [userId], references: [uid])
-  userId         String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  uid       String   @id @default(uuid())
+  publicKey String
+  user      User     @relation(fields: [userId], references: [uid])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("tb_enroll")
 }

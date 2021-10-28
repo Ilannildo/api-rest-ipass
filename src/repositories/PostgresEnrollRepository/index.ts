@@ -15,11 +15,11 @@ export class PostgresEnrollRepository implements IEnrollRepository {
   }
 
   async save(enroll: Enroll): Promise<Enroll> {
-    const passwordHash = await hash(enroll.passwordMaster, 8);
+    // const passwordHash = await hash(enroll.passwordMaster, 8);
     const enrollCreated = await client.enroll.create({
       data: {
-        ...enroll,
-        passwordMaster: passwordHash
+        publicKey: enroll.publicKey,
+        userId: enroll.userId,
       },
     });
 

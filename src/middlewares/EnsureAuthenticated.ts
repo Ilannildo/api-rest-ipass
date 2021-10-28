@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import {APPLICATION_CREDENTIALS} from '../config/auth.json';
 
 export function ensureAuthenticated(resquest: Request, response: Response, next: NextFunction) {
   const authToken = resquest.headers.authorization;
@@ -13,8 +12,7 @@ export function ensureAuthenticated(resquest: Request, response: Response, next:
 
   const [, token] = authToken.split(' ');
   try {
-    const payload = verify(token, APPLICATION_CREDENTIALS);
-    console.log('Payload 2 =>', payload);
+    const payload = verify(token, process.env.APPLICATION_CREDENTIALS);
     resquest.body.userId = payload.sub;
     return next();
   } catch (error) {

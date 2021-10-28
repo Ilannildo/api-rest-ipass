@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start": "node /dist/src/server.js",
+    "build": "tsc",
+    "release": "prisma migrate deploy"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,7 @@
     "@prisma/client": "^3.2.1",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.10.7",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.10.1",
     "jsonwebtoken": "^8.5.1"
