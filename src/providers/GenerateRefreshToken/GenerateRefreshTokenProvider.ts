@@ -11,7 +11,10 @@ export class GenerateRefreshTokenProvider {
     const tokenAlreadyExists = await this.refreshTokenRepository.findByUserId(userId);
 
     if (tokenAlreadyExists) {
-      throw new Error('Usuário já logado');
+      // throw new Error('Usuário já logado');
+      await this.refreshTokenRepository.removeAllByUserId(userId);
+      const generateRefreshToken = this.refreshTokenRepository.save(userId);
+      return generateRefreshToken;
     }
 
     const generateRefreshToken = this.refreshTokenRepository.save(userId);

@@ -13,7 +13,6 @@ export class CreateUserUseCase {
 
   async execute(user: User): Promise<ICreateUserResponse> {
     const userAlreadyExists = await this.userRepository.findByUserId(user.sub);
-    console.log('Passando aqui 1', userAlreadyExists);
 
     if (userAlreadyExists) {
       // Retornar o token de autenticação do usuário
